@@ -1,4 +1,4 @@
-Desenvolvendo um DW
+# Desenvolvendo um DW
 
 Sempre ouvi falar no ‘BI’ da empresa onde trabalhava e sabia que ele era baseado em um Data Warehouse, mas ver a coisa mesmo, nunca, até quis, mas não havia disponibilidade, a infraestrutura cobrava atenção, então nunca pude estudar direito esse tema, e sempre que tinha contato com banco de dados, era para OLTP e suas normalizações.
 
