@@ -1,0 +1,42 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: football-dw-db
+    restart: always
+    environment:
+      POSTGRES_USER: post
+      POSTGRES_PASSWORD: post1010
+      POSTGRES_DB: dw_performance_futebol
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    networks:
+      - football-dw-network
+
+  metabase:
+    image: metabase/metabase:latest
+    container_name: football-dw-metabase
+    restart: always
+    ports:
+      - "3000:3000"
+    environment:
+      MB_DB_TYPE: postgres
+      MB_DB_DBNAME: dw_performance_futebol
+      MB_DB_PORT: 5432
+      MB_DB_USER: post
+      MB_DB_PASS: post1010
+      MB_DB_HOST: db
+    networks:
+      - football-dw-network
+    depends_on:
+      - db
+
+networks:
+  football-dw-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
